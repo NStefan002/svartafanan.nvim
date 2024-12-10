@@ -56,6 +56,7 @@ function M.open()
 	M.update("SvartaFanan", 1)
 
 	api.nvim_create_autocmd("WinClosed", {
+		pattern = tostring(M.win),
 		group = api.nvim_create_augroup("SvartaFanan", {}),
 		callback = function()
 			api.nvim_buf_delete(M.buf, { force = true })
