@@ -19,6 +19,7 @@ function M.main(cube_size)
 	-- Print the scramble to the buffer
 	window.update(scramble_string, 3)
 
+	-- Print instructions to the buffer
 	window.update("Press <space> to start/stop the timer", 5)
 	window.update("Press q to close the window", 6)
 
@@ -30,7 +31,7 @@ function M.main(cube_size)
 		else
 			timer.start_timer()
 		end
-	end, { buffer = window.buf, desc = "svartafanan: start timer", nowait = true })
+	end, { buffer = window.buf, desc = "svartafanan: start/stop timer", nowait = true })
 
 	vim.keymap.set("n", "q", function()
 		vim.api.nvim_win_close(window.win, true)

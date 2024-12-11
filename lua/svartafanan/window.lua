@@ -2,9 +2,11 @@ local api = vim.api
 
 local M = {}
 
+---svartafanan buffer
 ---@type integer
 M.buf = nil
 
+---svartafanan window
 ---@type integer
 M.win = nil
 
@@ -53,8 +55,11 @@ function M.open()
 		table.insert(empty_lines, "")
 	end
 	api.nvim_buf_set_lines(M.buf, 0, -1, false, empty_lines)
+
+	-- set the title
 	M.update("SvartaFanan", 1)
 
+	-- if the svartafanan window gets closed, delete the buffer and stop the timer
 	api.nvim_create_autocmd("WinClosed", {
 		pattern = tostring(M.win),
 		group = api.nvim_create_augroup("SvartaFanan", {}),
